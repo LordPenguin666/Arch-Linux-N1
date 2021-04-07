@@ -1,8 +1,5 @@
 #!/bin/bash
 
-MMC=$(lsblk -f|grep -o  mmcblk.|uniq)
-BOOT_UUID=$(blkid -s UUID -o value /dev/${MMC}p1)
-ROOTFS_UUID=$(blkid -s UUID -o value /dev/${MMC}p2)
 
 #Resize Partition
 cat > /fdisk.cmd <<-EOF
@@ -28,6 +25,10 @@ rm /fdisk.cmd
 #Format Partition
 mkfs.vfat /dev/${MMC}p1
 mkfs.ext4 /dev/${MMC}p2
+
+MMC=$(lsblk -f|grep -o  mmcblk.|uniq)
+BOOT_UUID=$(blkid -s UUID -o value /dev/${MMC}p1)
+ROOTFS_UUID=$(blkid -s UUID -o value /dev/${MMC}p2)
 
 #Mount Partition
 mount /dev/${MMC}p2 /mnt
