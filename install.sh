@@ -1,5 +1,8 @@
 #!/bin/bash
 
+MMC=$(lsblk -f|grep -o  mmcblk.|uniq)
+BOOT_UUID=$(blkid -s UUID -o value /dev/${MMC}p1)
+ROOTFS_UUID=$(blkid -s UUID -o value /dev/${MMC}p2)
 
 #Resize Partition
 cat > /fdisk.cmd <<-EOF
