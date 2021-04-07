@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create Image
-fallocate -l 3G /Arch-N1.img
+fallocate -l 2G /Arch-N1.img
 
 #Resize Image
 cat > /fdisk.cmd <<-EOF
@@ -20,11 +20,12 @@ p
  
 w
 EOF
-fdisk /Arch-N1.img < fdisk.cmd
+fdisk /Arch-N1.img < /fdisk.cmd
 rm /fdisk.cmd
 
 #Mount As Loop Device
 losetup -f -P --show /Arch-N1.img
+sleep 5
 
 #Mount And Format Partition
 mkfs.vfat -n "BOOT" /dev/loop0p1
