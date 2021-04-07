@@ -41,5 +41,8 @@ sed -i "s/root=LABEL=ROOTFS/root=UUID=${ROOTFS_UUID}/" /mnt/boot/extlinux/extlin
 sed -i "s/LABEL=ROOTFS/UUID=${ROOTFS_UUID}/" /mnt/etc/fstab
 sed -i "s/LABEL=BOOT/UUID=${BOOT_UUID}/" /mnt/etc/fstab 
 
+umount -R /mnt
+
+exit 0
 
 
