@@ -13,3 +13,5 @@ https://github.com/cattyhouse/N1-install
 pacman -U https://kr1.us.to/kernel/linux-phicomm-n1-5.10.75-1-aarch64.pkg.tar.zst 
 pacman -U https://kr1.us.to/kernel/linux-phicomm-n1-headers-5.10.75-1-aarch64.pkg.tar.zst
 ```
+
+有可能会滚挂，请谨慎尝试！！
