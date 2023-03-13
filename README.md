@@ -7,5 +7,7 @@
 
 请使用 [Balena Etcher](https://www.balena.io/etcher) 将镜像写入至 U 盘
 
+如需将系统写入 MMC, 请之间执行 `/root` 下的 `./install.sh`
+
 
 
