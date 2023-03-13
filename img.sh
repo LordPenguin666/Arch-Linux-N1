@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create Image
-fallocate -l 2G /Arch-N1.img
+fallocate -l 3G /Arch-N1.img
 
 #Resize Image
 cat > /fdisk.cmd <<-EOF
