@@ -26,8 +26,8 @@ fdisk /dev/$MMC < /fdisk.cmd
 rm /fdisk.cmd
 
 #Format Partition
-mkfs.vfat /dev/${MMC}p1
-mkfs.ext4 /dev/${MMC}p2
+mkfs.vfat -F 32 -n BOOT /dev/${MMC}p1
+mkfs.ext4 -L ROOTFS /dev/${MMC}p2
 
 MMC=$(lsblk -f|grep -o  mmcblk.|uniq)
 BOOT_UUID=$(blkid -s UUID -o value /dev/${MMC}p1)

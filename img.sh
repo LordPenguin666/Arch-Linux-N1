@@ -28,11 +28,11 @@ losetup -f -P --show /Arch-N1.img
 sleep 5
 
 #Mount And Format Partition
-mkfs.vfat -n "BOOT" /dev/loop0p1
+mkfs.vfat -F 32 -n "BOOT" /dev/loop0p1
 mke2fs -F -q -t ext4 -L ROOTFS -m 0 /dev/loop0p2
-mkdir /img
+mkdir -p /img
 mount /dev/loop0p2 /img
-mkdir /img/boot
+mkdir -p /img/boot
 mount /dev/loop0p1 /img/boot
 
 #Backup
@@ -47,17 +47,17 @@ mkdir -p $DIR_INSTALL/run
 mkdir -p $DIR_INSTALL/sys
 mkdir -p $DIR_INSTALL/tmp
  
-tar -cf - bin | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - boot | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - etc | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - home | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - lib | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - opt | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - root | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - sbin | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - srv | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - usr | (cd $DIR_INSTALL; tar -xpf -)
-tar -cf - var | (cd $DIR_INSTALL; tar -xpf -)
+tar -cvf - bin | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - boot | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - etc | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - home | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - lib | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - opt | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - root | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - sbin | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - srv | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - usr | (cd $DIR_INSTALL; tar -xpvf -)
+tar -cvf - var | (cd $DIR_INSTALL; tar -xpvf -)
 
 sync
 
